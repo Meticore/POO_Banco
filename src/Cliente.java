@@ -13,11 +13,11 @@ public class Cliente {
 	private String dateAberCont;
 	private String endereco;
 	private double saldo;
-	private int dataCriacaoEmp;
+	private String dataCriacaoEmp;
 
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ,
-			String dateAberCont, String endereco, double saldo, int dataCriacaoEmp) {
+			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp) {
 		
 		
 		this.nome = nome;
@@ -129,12 +129,12 @@ public class Cliente {
 	}
 
 
-	public int getDataCriacaoEmp() {
+	public String getDataCriacaoEmp() {
 		return dataCriacaoEmp;
 	}
 
 
-	public void setDataCriacaoEmp(int dataCriacaoEmp) {
+	public void setDataCriacaoEmp(String dataCriacaoEmp) {
 		this.dataCriacaoEmp = dataCriacaoEmp;
 	}
 	
