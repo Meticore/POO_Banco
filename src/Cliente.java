@@ -5,19 +5,19 @@ public class Cliente {
 	
 	
 	
-	String nome;
-	String nomeEmpresa;
-	int numConta;
-	String CPF;
-	String CNPJ;
-	String dateAberCont;
-	String endereco;
-	double saldo;
-	
+	private String nome;
+	private String nomeEmpresa;
+	private int numConta;
+	private String CPF;
+	private String CNPJ;
+	private String dateAberCont;
+	private String endereco;
+	private double saldo;
+	private int dataCriacaoEmp;
 
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ,
-			String dateAberCont, String endereco, double saldo) {
+			String dateAberCont, String endereco, double saldo, int dataCriacaoEmp) {
 		
 		
 		this.nome = nome;
@@ -27,15 +27,15 @@ public class Cliente {
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;
+		this.dataCriacaoEmp = dataCriacaoEmp;
 	
 	
 	}
 	//aqui
 
 
-
 	public Cliente(String nome, int numConta, String CPF,
-			String dateAberCont, String endereco) {
+			String dateAberCont, String endereco, double saldo) {
 		
 		
 		this.nome = nome;
@@ -47,26 +47,96 @@ public class Cliente {
 	
 	
 	}
-	
-	
-	
-	
-	
-	
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public String getNome() {
+		return nome;
+	}
 
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getNomeEmpresa() {
+		return nomeEmpresa;
+	}
+
+
+	public void setNomeEmpresa(String nomeEmpresa) {
+		this.nomeEmpresa = nomeEmpresa;
+	}
+
+
+	public int getNumConta() {
+		return numConta;
+	}
+
+
+	public void setNumConta(int numConta) {
+		this.numConta = numConta;
+	}
+
+
+	public String getCPF() {
+		return CPF;
+	}
+
+
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+
+
+	public String getCNPJ() {
+		return CNPJ;
+	}
+
+
+	public void setCNPJ(String cNPJ) {
+		CNPJ = cNPJ;
+	}
+
+
+	public String getDateAberCont() {
+		return dateAberCont;
+	}
+
+
+	public void setDateAberCont(String dateAberCont) {
+		this.dateAberCont = dateAberCont;
+	}
+
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+
+	public int getDataCriacaoEmp() {
+		return dataCriacaoEmp;
+	}
+
+
+	public void setDataCriacaoEmp(int dataCriacaoEmp) {
+		this.dataCriacaoEmp = dataCriacaoEmp;
+	}
+	
+	
 }
