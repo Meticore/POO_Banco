@@ -21,7 +21,7 @@ public class Banco {
 	
 	private int findAccount(int conta){
 		
-	   for (int i = 0; i < cli.size() -1; i++) {
+	   for (int i = 0; i < cli.size(); i++) {
 		   
 		   
 		   if(conta == cli.get(i).getNumConta()){
@@ -49,6 +49,12 @@ public class Banco {
 		
 	
 	public void deposito (double valor, int nConta){
+		
+		int index = findAccount(nConta);
+		
+		
+		cli.get(index).setSaldo(cli.get(index).getSaldo() + valor);
+		
 		
 	}
 	
