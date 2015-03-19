@@ -58,7 +58,12 @@ public class Banco {
 		
 	}
 	
-	public void tranferir (double valor, int nConta){
+	public void tranferir (int  contaOrig, int contaDist , double valor){
+		
+		
+		
+		
+		
 		
 	}
 	
