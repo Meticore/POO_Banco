@@ -61,13 +61,19 @@ public class Banco {
 	public void tranferir (int  contaOrig, int contaDist , double valor){
 		
 		
-		
-		
-		
+		sacar(valor , contaOrig);
+		deposito(valor, contaDist);
+			
 		
 	}
 	
 	public String saldo (int nConta){
+		
+		int index = findAccount(nConta);
+		
+		
+		cli.get(index).getSaldo();
+		
 		return null;
 		
 	}
