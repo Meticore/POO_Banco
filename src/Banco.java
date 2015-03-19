@@ -67,14 +67,14 @@ public class Banco {
 		
 	}
 	
-	public String saldo (int nConta){
+	public double saldo (int nConta){
 		
 		int index = findAccount(nConta);
 		
 		
-		cli.get(index).getSaldo();
+		double saldo = cli.get(index).getSaldo();
 		
-		return null;
+		return saldo ;
 		
 	}
 	
