@@ -71,7 +71,7 @@ public class Banco {
 		
 	}
 	
-	public void tranferir (int  contaOrig, int contaDist , double valor, int tOrig, int tDest){
+	public void tranferir (int contaOrig, int contaDist , double valor, int tOrig, int tDest){
 		
 		
 		sacar(valor , contaOrig, tOrig);
@@ -88,7 +88,7 @@ public class Banco {
 		
 		double saldo = cli.get(index).getSaldo();
 		
-		return saldo ;
+		return saldo;
 		
 	}
 	
