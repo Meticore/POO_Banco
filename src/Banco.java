@@ -19,6 +19,14 @@ public class Banco {
 		
 	}
 	
+	private int findAccount2(int conta){
+		
+		
+		return cli.indexOf(cli.get(conta));
+		
+	}
+	
+	
 	private int findAccount(int conta){
 		
 	   for (int i = 0; i < cli.size(); i++) {
