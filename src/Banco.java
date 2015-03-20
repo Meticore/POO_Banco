@@ -44,19 +44,24 @@ public class Banco {
 		
 	}
 	
-	public void sacar (double valor, int nConta){
+	public void sacar (double valor, int nConta, int tConta){
 		
 		int index = findAccount(nConta);
+		Cliente aux = cli.get(index);
 		
-		
-		cli.get(index).setSaldo(cli.get(index).getSaldo() - valor);
+	    if (aux.getTipo(tConta) == 1){
+	    	aux.setSaldo(aux.getSaldo() - valor);
+	    }else{
+	    	aux.setSaldo(aux.getSaldo() - valor);
+	    }
 			
+		//operação tranferência
+	    
 			
-			
-		}	
+	}	
 		
 	
-	public void deposito (double valor, int nConta){
+	public void deposito (double valor, int nConta, int tConta){
 		
 		int index = findAccount(nConta);
 		
@@ -66,11 +71,12 @@ public class Banco {
 		
 	}
 	
-	public void tranferir (int  contaOrig, int contaDist , double valor){
+	public void tranferir (int  contaOrig, int contaDist , double valor, int tOrig, int tDest){
 		
 		
-		sacar(valor , contaOrig);
-		deposito(valor, contaDist);
+		sacar(valor , contaOrig, tOrig);
+		deposito(valor, contaDist, tDest);
+		
 			
 		
 	}

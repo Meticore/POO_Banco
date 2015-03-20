@@ -6,6 +6,7 @@ public class Cliente {
 	
 	
 	private String nome;
+	private int tipo;
 	private String nomeEmpresa;
 	private int numConta;
 	private String CPF;
@@ -16,14 +17,15 @@ public class Cliente {
 	private String dataCriacaoEmp;
 
 	
-	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ,
-			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp) {
+	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
+			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp){
 		
 		
 		this.nome = nome;
 		this.nomeEmpresa = nomeEmpresa;
 		this.numConta = numConta;
 		this.CNPJ = CNPJ;
+		this.tipo = tipo;
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;
@@ -31,21 +33,18 @@ public class Cliente {
 	
 	
 	}
-	//aqui
-
-
-	public Cliente(String nome, int numConta, String CPF,
-			String dateAberCont, String endereco, double saldo) {
+	
+	public Cliente(String nome, int numConta, String CPF, int tipo,
+			String dateAberCont, String endereco, double saldo){
 		
 		
 		this.nome = nome;
 		this.numConta = numConta;
 		this.CPF = CPF;
+		this.tipo = tipo;
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
-		this.saldo = saldo;
-	
-	
+		this.saldo = saldo;	
 	}
 
 
@@ -137,6 +136,16 @@ public class Cliente {
 	public void setDataCriacaoEmp(String dataCriacaoEmp) {
 		this.dataCriacaoEmp = dataCriacaoEmp;
 	}
+
+	public int getTipo(int tConta) {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+
 	
 	
 }
