@@ -1,4 +1,3 @@
-import java.util.Date;
 
 
 public class Cliente {
@@ -15,6 +14,9 @@ public class Cliente {
 	private String endereco;
 	private double saldo;
 	private String dataCriacaoEmp;
+	private double limite;
+	private String extrato;
+	String Ext = new String();
 
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
@@ -30,6 +32,9 @@ public class Cliente {
 		this.endereco = endereco;
 		this.saldo = saldo;
 		this.dataCriacaoEmp = dataCriacaoEmp;
+		limite = 0;
+		extrato = "Extrato   Conta:"+ numConta +"\n" + nome +"\n";
+		
 	
 	
 	}
@@ -45,6 +50,10 @@ public class Cliente {
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;	
+		limite = 1000.00;
+		extrato = "Extrato   Conta:"+ numConta +"\n";
+	
+		
 	}
 
 
@@ -143,6 +152,24 @@ public class Cliente {
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+	}
+
+	public double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
+
+	public String getExtrato() {
+		return extrato;
+	}
+
+	public void setExtrato(String extrato) {
+		
+		
+		this.extrato += extrato +"\n";
 	}
 
 

@@ -19,13 +19,7 @@ public class Banco {
 		
 	}
 	
-	private int findAccount2(int conta){
 		
-		
-		return cli.indexOf(cli.get(conta));
-		
-	}
-	
 	
 	private int findAccount(int conta){
 		
@@ -55,7 +49,7 @@ public class Banco {
 	    	aux.setSaldo(aux.getSaldo() - valor);
 	    }
 			
-		//operação tranferência
+		//operaï¿½ï¿½o tranferï¿½ncia
 	    
 			
 	}	
@@ -63,10 +57,23 @@ public class Banco {
 	
 	public void deposito (double valor, int nConta, int tConta){
 		
+//		int index = findAccount(nConta);
+//		
+//		
+//		cli.get(index).setSaldo(cli.get(index).getSaldo() + valor);
+		
+		
 		int index = findAccount(nConta);
+		Cliente aux = cli.get(index);
 		
-		
-		cli.get(index).setSaldo(cli.get(index).getSaldo() + valor);
+	    if (aux.getTipo(tConta) == 1){
+	    	
+	    	aux.setSaldo(aux.getSaldo() + valor);
+	    
+	    }else{
+	    	
+	    	aux.setSaldo(aux.getSaldo() + valor);
+	    }
 		
 		
 	}
@@ -77,7 +84,8 @@ public class Banco {
 		sacar(valor , contaOrig, tOrig);
 		deposito(valor, contaDist, tDest);
 		
-			
+		cli.get(findAccount(contaDist)).setExtrato("T       DE "  +contaOrig + " Valor R$ " +valor + "  C");
+		cli.get(findAccount(contaOrig)).setExtrato("T       PARA "+contaDist + " Valor R$ " +valor + "  D");	
 		
 	}
 	
@@ -88,12 +96,37 @@ public class Banco {
 		
 		double saldo = cli.get(index).getSaldo();
 		
+		
 		return saldo;
 		
 	}
 	
-	public String extrato (int nConta){
-		return null;
+	public double saldoComLimite(int nConta){
+		
+		int index = findAccount(nConta);
+		
+		
+		double saldoComLimite = cli.get(index).getSaldo() + cli.get(index).getLimite();
+		
+		return saldoComLimite;
 		
 	}
+
+
+	
+	public String extrato (int nConta){
+		
+		int index = findAccount(nConta);
+		
+		cli.get(index).setExtrato("Seu Saldo na Data        " + saldo(nConta) + "\n");
+		
+		cli.get(index).setExtrato("Seu Limite         " + cli.get(index).getLimite() + "\n");
+		
+		
+		return cli.get(index).getExtrato();
+		
+	}
+	
+	
+	
 }
