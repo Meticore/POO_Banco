@@ -40,18 +40,28 @@ public class Banco {
 	
 	public void sacar (double valor, int nConta, int tConta){
 		
+		
 		int index = findAccount(nConta);
 		Cliente aux = cli.get(index);
+		double resto = 0;
 		
 	    if (aux.getTipo(tConta) == 1){
 	    	aux.setSaldo(aux.getSaldo() - valor);
-	    }else{
-	    	aux.setSaldo(aux.getSaldo() - valor);
-	    }
+	    }else{	    	
+		    if(valor > cli.get(index).getSaldo()){
+				resto = valor - cli.get(index).getSaldo();
+				cli.get(index).setSaldo(0);
+				cli.get(index).setLimite(cli.get(index).getLimite()- resto);		
 			
-		//opera��o tranfer�ncia
+			}
+	    	if(cli.get(index).getSaldo() <= 0){
+	    		aux.setSaldo(aux.getSaldo() - valor);
+	    		cli.get(index).setLimite(cli.get(index).getLimite() - valor);
+	    	}
+	    }	    
+		
+
 	    
-			
 	}	
 		
 	

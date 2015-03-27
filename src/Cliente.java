@@ -1,5 +1,4 @@
 
-
 public class Cliente {
 	
 	
@@ -17,7 +16,8 @@ public class Cliente {
 	private double limite;
 	private String extrato;
 	String Ext = new String();
-
+	//private ArrayList<String> linhas;
+	
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
 			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp){
@@ -34,7 +34,7 @@ public class Cliente {
 		this.dataCriacaoEmp = dataCriacaoEmp;
 		limite = 0;
 		extrato = "Extrato   Conta:"+ numConta +"\n" + nome +"\n";
-		
+		//linhas = new ArrayList<String>();
 	
 	
 	}
@@ -52,11 +52,11 @@ public class Cliente {
 		this.saldo = saldo;	
 		limite = 1000.00;
 		extrato = "Extrato   Conta:"+ numConta +"\n";
-	
+		//linhas = new ArrayList<String>();
 		
 	}
 
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -171,8 +171,11 @@ public class Cliente {
 		
 		this.extrato += extrato +"\n";
 	}
-
-
+		
+	/*public void addLinha (String linha){
+		linhas.add(linha);
+	}*/
+	
 	
 	
 }
