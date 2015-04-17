@@ -6,16 +6,16 @@ public class Banco {
 	
 	
 	
-	private ArrayList<Cliente> cli;	
+	private ArrayList<Cliente> cli; //cli = Cliente	
 	
 	
 	public Banco() {
 		cli = new ArrayList<Cliente>();
 	}
 	
-	public void  addCliente(Cliente cli) {
+	public void  addCliente(Cliente c) {
 		
-		this.cli.add(cli);
+		this.cli.add(c);
 		
 	}
 	
@@ -32,7 +32,7 @@ public class Banco {
 	   for (int i = 0; i < cli.size(); i++) {
 		   
 		   
-		   if(conta == cli.get(i).getNumConta()){
+		   if(conta == cli.get(i).getNumConta()){ //cliente - numConta;
 			   
 			   return i;
 			   		  
@@ -44,19 +44,32 @@ public class Banco {
 		
 	}
 	
-	public void sacar (double valor, int nConta, int tConta){
+	public boolean sacar (double valor, int nConta){
 		
 		int index = findAccount(nConta);
 		Cliente aux = cli.get(index);
 		
-	    if (aux.getTipo(tConta) == 1){
-	    	aux.setSaldo(aux.getSaldo() - valor);
+	    if (aux.getTipo() == 1){
+	    	if(aux.getSaldo() >= valor){
+	    		aux.setSaldo(aux.getSaldo() - valor);
+	    		return true;
+	    	}else{
+	    		return false;
+	    	}	    	
 	    }else{
-	    	aux.setSaldo(aux.getSaldo() - valor);
-	    }
-			
-		//operação tranferência
-	    
+	    	if (aux.getSaldo() >= valor){
+	    		aux.setSaldo(aux.getSaldo() - valor);
+	    		return true;
+	    	}else{
+	    		if (valor <= aux.getLimiteEsp()){
+	    			aux.setLimiteEsp(aux.getLimiteEsp()-valor-(valor*0.05));
+	    			return true;
+	    		}else{
+	    		return false;
+	    		}
+	    	}
+	    	
+	    }  
 			
 	}	
 		
@@ -74,7 +87,7 @@ public class Banco {
 	public void tranferir (int  contaOrig, int contaDist , double valor, int tOrig, int tDest){
 		
 		
-		sacar(valor , contaOrig, tOrig);
+		sacar(valor , contaOrig);
 		deposito(valor, contaDist, tDest);
 		
 			

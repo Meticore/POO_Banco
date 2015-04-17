@@ -18,12 +18,16 @@ public class incial {
 		
 		//testes 
 		
-//		System.out.println("Saldo inicial R$ " + banco.saldo(246922));
-//		
-//		banco.sacar(10.00,246922 );
-//		
-//		System.out.print("Novo Saldo R$ " + banco.saldo(246922));
-//		
+		System.out.println("Saldo inicial R$ " + banco.saldo(246923));
+
+		if (banco.sacar(1050.00,246923 )){
+			System.out.println("Saque efetuado!");
+		}else{
+			System.out.println("Saldo insuficiente!");
+		}
+		
+		System.out.print("Novo Saldo R$ " + banco.saldo(246923));
+		
 		System.out.println("Saldo inicial R$ " + banco.saldo(246922));
 		System.out.println("Saldo inicial R$ " + banco.saldo(246923));
 		

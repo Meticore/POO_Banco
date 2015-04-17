@@ -1,4 +1,3 @@
-import java.util.Date;
 
 
 public class Cliente {
@@ -15,7 +14,7 @@ public class Cliente {
 	private String endereco;
 	private double saldo;
 	private String dataCriacaoEmp;
-
+	private double limiteEsp;
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
 			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp){
@@ -45,6 +44,7 @@ public class Cliente {
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;	
+		this.limiteEsp = 1000;
 	}
 
 
@@ -137,12 +137,20 @@ public class Cliente {
 		this.dataCriacaoEmp = dataCriacaoEmp;
 	}
 
-	public int getTipo(int tConta) {
+	public int getTipo() {
 		return tipo;
 	}
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+	}
+
+	public double getLimiteEsp() {
+		return limiteEsp;
+	}
+
+	public void setLimiteEsp(double limiteEsp) {
+		this.limiteEsp = limiteEsp;
 	}
 
 
