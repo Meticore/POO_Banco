@@ -19,7 +19,7 @@ public class Cliente {
 	//private ArrayList<String> linhas;
 	
 	
-	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
+	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ,
 			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp){
 		
 		
@@ -27,32 +27,32 @@ public class Cliente {
 		this.nomeEmpresa = nomeEmpresa;
 		this.numConta = numConta;
 		this.CNPJ = CNPJ;
-		this.tipo = tipo;
+		this.tipo = 1;
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;
 		this.dataCriacaoEmp = dataCriacaoEmp;
 		limite = 0;
 		extrato = "Extrato   Conta:"+ numConta +"\n" + nome +"\n";
-		//linhas = new ArrayList<String>();
+		
 	
 	
 	}
 	
-	public Cliente(String nome, int numConta, String CPF, int tipo,
+	public Cliente(String nome, int numConta, String CPF,
 			String dateAberCont, String endereco, double saldo){
 		
 		
 		this.nome = nome;
 		this.numConta = numConta;
 		this.CPF = CPF;
-		this.tipo = tipo;
+		this.tipo = 2;
 		this.dateAberCont = dateAberCont;
 		this.endereco = endereco;
 		this.saldo = saldo;	
 		limite = 1000.00;
 		extrato = "Extrato   Conta:"+ numConta +"\n";
-		//linhas = new ArrayList<String>();
+		
 		
 	}
 
@@ -146,7 +146,7 @@ public class Cliente {
 		this.dataCriacaoEmp = dataCriacaoEmp;
 	}
 
-	public int getTipo(int tConta) {
+	public int getTipo() {
 		return tipo;
 	}
 

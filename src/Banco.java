@@ -37,62 +37,95 @@ public class Banco {
 	   return -1;
 		
 	}
-	
-	public void sacar (double valor, int nConta, int tConta){
+	//metodo ok 
+	public void sacar (double valor, int nConta){
 		
 		
 		int index = findAccount(nConta);
 		Cliente aux = cli.get(index);
 		double resto = 0;
 		
-	    if (aux.getTipo(tConta) == 1){
-	    	aux.setSaldo(aux.getSaldo() - valor);
-	    }else{	    	
-		    if(valor > cli.get(index).getSaldo()){
-				resto = valor - cli.get(index).getSaldo();
-				cli.get(index).setSaldo(0);
-				cli.get(index).setLimite(cli.get(index).getLimite()- resto);		
-			
-			}
-	    	if(cli.get(index).getSaldo() <= 0){
+	    if (aux.getTipo() == 1){
+	    	
+	    	if( valor > aux.getSaldo()){
+	    		
+	    		System.out.println("Saldo insuficiente \nSaque não realizado");
+	    		
+	    	}else{
+	    	
 	    		aux.setSaldo(aux.getSaldo() - valor);
-	    		cli.get(index).setLimite(cli.get(index).getLimite() - valor);
-	    	}
-	    }	    
-		
-
+	    	
+	    		 }
 	    
+	    	
+	    }else{	    	
+		    
+	    	if(valor > aux.getSaldo()){
+				resto = valor - aux.getSaldo();
+				aux.setSaldo(0);
+				aux.setLimite(aux.getLimite() - (resto + (( resto /100 ) * 5 )));		
+			
+	    	}else{
+	    		
+		    	
+		    	aux.setSaldo(aux.getSaldo() - valor);
+	    		    		
+	    		
+	    	}
+	    	
+	    }
+	    
+	    
+	    
+		
 	}	
 		
-	
-	public void deposito (double valor, int nConta, int tConta){
+	// deposito ok 
+	public void deposito (double valor, int nConta){
 		
-//		int index = findAccount(nConta);
-//		
-//		
-//		cli.get(index).setSaldo(cli.get(index).getSaldo() + valor);
+
+		double valorAddConta = 0;
 		
+		double valorFaltaLimite = 0 ;
 		
 		int index = findAccount(nConta);
+		
 		Cliente aux = cli.get(index);
 		
-	    if (aux.getTipo(tConta) == 1){
+	    
+		if (aux.getTipo() == 1){
 	    	
 	    	aux.setSaldo(aux.getSaldo() + valor);
 	    
-	    }else{
+	    	}else{
 	    	
-	    	aux.setSaldo(aux.getSaldo() + valor);
-	    }
-		
+	    	
+	    		if(aux.getLimite() < 1000){
+	    		
+	    			valorFaltaLimite = 1000 - aux.getLimite();
+	    		
+	    			valorAddConta = valor - valorFaltaLimite;
+	    		
+	    			aux.setLimite( aux.getLimite() + valorFaltaLimite);
+	    		
+	    			aux.setSaldo(valorAddConta);
+	    	 
+	    			}else{
+	    		
+	    				aux.setSaldo(aux.getSaldo() + valor);
+	    	
+	    				
+	    			}
+	    
+	    	}
 		
 	}
 	
-	public void tranferir (int contaOrig, int contaDist , double valor, int tOrig, int tDest){
+	public void tranferir (int contaOrig, int contaDist , double valor){
 		
 		
-		sacar(valor , contaOrig, tOrig);
-		deposito(valor, contaDist, tDest);
+		sacar(valor , contaOrig);
+		deposito(valor, contaDist);
 		
 		cli.get(findAccount(contaDist)).setExtrato("T       DE "  +contaOrig + " Valor R$ " +valor + "  C");
 		cli.get(findAccount(contaOrig)).setExtrato("T       PARA "+contaDist + " Valor R$ " +valor + "  D");	
@@ -102,9 +135,9 @@ public class Banco {
 	public double saldo (int nConta){
 		
 		int index = findAccount(nConta);
+		Cliente aux = cli.get(index);
 		
-		
-		double saldo = cli.get(index).getSaldo();
+		double saldo = aux.getSaldo();
 		
 		
 		return saldo;
@@ -114,9 +147,9 @@ public class Banco {
 	public double saldoComLimite(int nConta){
 		
 		int index = findAccount(nConta);
+		Cliente aux = cli.get(index);
 		
-		
-		double saldoComLimite = cli.get(index).getSaldo() + cli.get(index).getLimite();
+		double saldoComLimite = aux.getSaldo() + aux.getLimite();
 		
 		return saldoComLimite;
 		
@@ -127,13 +160,13 @@ public class Banco {
 	public String extrato (int nConta){
 		
 		int index = findAccount(nConta);
+		Cliente aux = cli.get(index);
 		
-		cli.get(index).setExtrato("Seu Saldo na Data        " + saldo(nConta) + "\n");
+		aux.setExtrato("Seu Saldo na Data        " + saldo(nConta) + "\n");
+		aux.setExtrato("Seu Limite         " + aux.getLimite() + "\n");
 		
-		cli.get(index).setExtrato("Seu Limite         " + cli.get(index).getLimite() + "\n");
 		
-		
-		return cli.get(index).getExtrato();
+		return aux.getExtrato();
 		
 	}
 	
