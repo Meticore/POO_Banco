@@ -123,4 +123,17 @@ public class Banco {
 		}		
 		return (vetor);
 	}
+	
+	public double maiorsaldo (){
+			
+		double maiorsaldo = cli.get(0).getSaldo();
+		
+		for (int i=0; i < cli.size(); i++){
+			if(cli.get(i).getSaldo() > maiorsaldo){
+				maiorsaldo = cli.get(i).getSaldo();
+			}			
+		}		
+		return maiorsaldo;
+	}
+	
 }
