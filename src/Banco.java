@@ -19,6 +19,7 @@ public class Banco {
 		
 	}
 	
+	
 	private int findAccount2(int conta){
 		
 		
@@ -108,5 +109,18 @@ public class Banco {
 	public String extrato (int nConta){
 		return null;
 		
+	}
+	public int[] pesquisa (){
+		int [] vetor = new int [2];
+		
+		for (int i=0; i < cli.size(); i++){
+			if(cli.get(i).getTipo() == 1){
+				vetor[0]++;
+			}else{
+				vetor[1]++;
+			}
+			
+		}		
+		return (vetor);
 	}
 }
