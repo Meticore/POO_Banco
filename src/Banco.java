@@ -49,7 +49,7 @@ public class Banco {
 		
 		int index = findAccount(nConta);
 		Cliente aux = cli.get(index);
-		
+				
 	    if (aux.getTipo() == 1){
 	    	if(aux.getSaldo() >= valor){
 	    		aux.setSaldo(aux.getSaldo() - valor);
@@ -58,12 +58,15 @@ public class Banco {
 	    		return false;
 	    	}	    	
 	    }else{
+	    	
 	    	if (aux.getSaldo() >= valor){
 	    		aux.setSaldo(aux.getSaldo() - valor);
 	    		return true;
 	    	}else{
 	    		if (valor <= aux.getLimiteEsp()){
-	    			aux.setLimiteEsp(aux.getLimiteEsp()-valor-(valor*0.05));
+	    			
+	    			double taxa = valor *0.05;
+	    			aux.setLimiteEsp(aux.getLimiteEsp()-valor-(taxa));
 	    			return true;
 	    		}else{
 	    		return false;
@@ -134,6 +137,23 @@ public class Banco {
 			}			
 		}		
 		return maiorsaldo;
+	}
+	
+	
+	public double maiorestaxa (){
+		
+		double taxas = cli.get(0).getTaxa();
+		int cliente = 0;
+		
+		for (int i=0; i < cli.size(); i++){
+			if(cli.get(i).getTaxa() > taxas){
+				taxas = cli.get(i).getTaxa();
+				cliente = i;
+				
+			}			
+		}	
+		
+		return cliente;
 	}
 	
 }

@@ -15,6 +15,7 @@ public class Cliente {
 	private double saldo;
 	private String dataCriacaoEmp;
 	private double limiteEsp;
+	private double taxa;
 	
 	public Cliente(String nome, String nomeEmpresa, int numConta, String CNPJ, int tipo,
 			String dateAberCont, String endereco, double saldo, String dataCriacaoEmp){
@@ -34,7 +35,7 @@ public class Cliente {
 	}
 	
 	public Cliente(String nome, int numConta, String CPF, int tipo,
-			String dateAberCont, String endereco, double saldo){
+			String dateAberCont, String endereco, double saldo, double taxa){
 		
 		
 		this.nome = nome;
@@ -45,6 +46,8 @@ public class Cliente {
 		this.endereco = endereco;
 		this.saldo = saldo;	
 		this.limiteEsp = 1000;
+		this.taxa = taxa;
+		
 	}
 
 
@@ -151,6 +154,14 @@ public class Cliente {
 
 	public void setLimiteEsp(double limiteEsp) {
 		this.limiteEsp = limiteEsp;
+	}
+
+	public double getTaxa() {
+		return taxa;
+	}
+
+	public void setTaxa(double taxa) {
+		this.taxa = taxa;
 	}
 
 
