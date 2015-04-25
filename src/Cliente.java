@@ -15,6 +15,9 @@ public class Cliente {
 	private String dataCriacaoEmp;
 	private double limite;
 	private String extrato;
+	private double taxa ;
+		
+	
 	String Ext = new String();
 	//private ArrayList<String> linhas;
 	
@@ -51,6 +54,7 @@ public class Cliente {
 		this.endereco = endereco;
 		this.saldo = saldo;	
 		limite = 1000.00;
+		taxa = 0;
 		extrato = "Extrato   Conta:"+ numConta +"\n";
 		
 		
@@ -170,6 +174,14 @@ public class Cliente {
 		
 		
 		this.extrato += extrato +"\n";
+	}
+
+	public double getTaxa() {
+		return taxa;
+	}
+
+	public void setTaxa(double taxa) {
+		this.taxa = taxa;
 	}
 		
 	/*public void addLinha (String linha){

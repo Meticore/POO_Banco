@@ -6,7 +6,7 @@ public class Banco {
 	
 	
 	
-	private ArrayList<Cliente> cli;	
+	 ArrayList<Cliente> cli;	
 	
 	
 	public Banco() {
@@ -18,6 +18,9 @@ public class Banco {
 		this.cli.add(cli);
 		
 	}
+	
+	
+		
 	
 		
 	
@@ -54,6 +57,7 @@ public class Banco {
 	    	}else{
 	    	
 	    		aux.setSaldo(aux.getSaldo() - valor);
+	    		aux.setExtrato(valor + "     D");
 	    	
 	    		 }
 	    
@@ -63,13 +67,18 @@ public class Banco {
 	    	if(valor > aux.getSaldo()){
 				resto = valor - aux.getSaldo();
 				aux.setSaldo(0);
-				aux.setLimite(aux.getLimite() - (resto + (( resto /100 ) * 5 )));		
+				
+				aux.setLimite(aux.getLimite() - (resto + (( resto /100 ) * 5 )));
+				
+				aux.setTaxa(aux.getTaxa() + (( resto /100 ) * 5) );
+				
+				aux.setExtrato(valor + "     D");
 			
 	    	}else{
 	    		
 		    	
 		    	aux.setSaldo(aux.getSaldo() - valor);
-	    		    		
+		    	aux.setExtrato(valor + "     D");    		
 	    		
 	    	}
 	    	
@@ -109,11 +118,13 @@ public class Banco {
 	    			aux.setLimite( aux.getLimite() + valorFaltaLimite);
 	    		
 	    			aux.setSaldo(valorAddConta);
+	    			
+	    			aux.setExtrato(valor + "     C");
 	    	 
 	    			}else{
 	    		
 	    				aux.setSaldo(aux.getSaldo() + valor);
-	    	
+	    				aux.setExtrato(valor + "     C");
 	    				
 	    			}
 	    
@@ -171,5 +182,71 @@ public class Banco {
 	}
 	
 	
+	public int[] pesquisa (){
+		
+		int [] vetor = new int [2];
+		
+		for (int i=0; i < cli.size(); i++){
+			
+			if(cli.get(i).getTipo() == 2){
+				
+				vetor[0]++;
+			
+			}else{
+			
+				vetor[1]++;
+			}
+			
+		}		
+		
+		return (vetor);
+	}
+	
+	
+	public int maiorsaldo (){
+		
+		double maiorsaldo = cli.get(0).getSaldo();
+		
+		int cliente = 0;
+		
+		for (int i=0; i < cli.size(); i++){
+			if(cli.get(i).getSaldo() > maiorsaldo){
+				
+				maiorsaldo = cli.get(i).getSaldo();
+				
+				cliente = i;
+			}			
+		}		
+		
+		return cliente;
+	}
+	
+	public Cliente infCliente(int index){
+		
+		Cliente aux = cli.get(index);
+		
+		return aux;
+		
+	}
+	
+public int maiorestaxa (){
+		
+		double taxas = cli.get(0).getTaxa();
+		
+		int cliente = 0;
+		
+		for (int i=0; i < cli.size(); i++){
+		
+			if(cli.get(i).getTaxa() > taxas){
+			
+				taxas = cli.get(i).getTaxa();
+				
+				cliente = i;
+				
+			}			
+		}	
+		
+		return cliente;
+	}
 	
 }
